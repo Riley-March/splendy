@@ -1,4 +1,5 @@
 import { ApolloServer } from 'apollo-server-express';
+import path from 'path';
 import { typeDefs } from './graphql/schema/typeDefs';
 import { resolvers } from './graphql/resolvers/resolvers';
 import dotenv from 'dotenv';
@@ -17,6 +18,7 @@ const server = new ApolloServer({
 });
 
 const app = express();
+app.use(express.static(path.join(__dirname, 'public')));
 
 server.applyMiddleware({app});
 
@@ -42,6 +44,10 @@ get_tickets('6031cad12260322fd75a6c93');
 const db: string = `mongodb${process.env.MONGO_TYPE}://${process.env.MONGO_USER}:${process.env.MONGO_PASS}@${process.env.MONGO_HOST}/${process.env.MONGO_DB}?retryWrites=true&w=majority`;
 
 connect(db);
+
+app.get('/*', function (req, res) {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
 
 app.listen(PORT, () => {
     console.log(`🚀 Server ready at http://localhost:${PORT}`)
