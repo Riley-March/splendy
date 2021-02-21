@@ -4,6 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var apollo_server_express_1 = require("apollo-server-express");
+var path_1 = __importDefault(require("path"));
 var typeDefs_1 = require("./graphql/schema/typeDefs");
 var resolvers_1 = require("./graphql/resolvers/resolvers");
 var dotenv_1 = __importDefault(require("dotenv"));
@@ -21,6 +22,7 @@ var server = new apollo_server_express_1.ApolloServer({
     },
 });
 var app = express_1.default();
+app.use(express_1.default.static(path_1.default.join(__dirname, 'public')));
 server.applyMiddleware({ app: app });
 scraper_1.get_tickets('6031cad12260322fd75a6c93');
 //Push updates to client every 30 seconds
@@ -39,6 +41,9 @@ scraper_1.get_tickets('6031cad12260322fd75a6c93');
 // }, 600000)
 var db = "mongodb" + process.env.MONGO_TYPE + "://" + process.env.MONGO_USER + ":" + process.env.MONGO_PASS + "@" + process.env.MONGO_HOST + "/" + process.env.MONGO_DB + "?retryWrites=true&w=majority";
 connect_1.default(db);
+app.get('/*', function (req, res) {
+    res.sendFile(path_1.default.join(__dirname, 'public', 'index.html'));
+});
 app.listen(PORT, function () {
     console.log("\uD83D\uDE80 Server ready at http://localhost:" + PORT);
 });
