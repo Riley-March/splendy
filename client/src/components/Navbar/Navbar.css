@@ -1,0 +1,33 @@
+.navbar-outer {
+    display: flex;
+    justify-content: center;
+    background-color: var(--purple-color);
+}
+
+.navbar {
+    display: flex;
+    max-width: 1200px;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    background-color: var(--purple-color);
+    -moz-user-select: none; -webkit-user-select: none; -ms-user-select:none; user-select:none; -o-user-select:none;
+}
+
+.navbar-links {
+    display: flex;
+    flex-direction: row;
+}
+
+.link {
+    margin-left: 1rem;
+    cursor: pointer;
+    text-decoration: none;
+    color: white;
+}
+
+.icon {
+    font-size: 1.25rem;
+    margin-right: 0.5rem;
+}

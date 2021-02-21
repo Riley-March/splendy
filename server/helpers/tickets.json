@@ -1,0 +1,27 @@
+[
+    {
+        "name": "3 Day Event Ticket",
+        "price": "$415.91",
+        "quantity": "4"
+    },
+    {
+        "name": "Friday Event Ticket",
+        "price": "$201.35",
+        "quantity": "1"
+    },
+    {
+        "name": "Saturday Event Ticket",
+        "price": "$201.35",
+        "quantity": "4"
+    },
+    {
+        "name": "Sunday Event Ticket",
+        "price": "$201.35",
+        "quantity": "1"
+    },
+    {
+        "name": "Camping Ticket",
+        "price": "$155.47",
+        "quantity": "1"
+    }
+]
